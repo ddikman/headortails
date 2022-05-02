@@ -16,6 +16,8 @@ class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
     final builder = builders[settings.name];
     if (builder == null) return null;
-    return MaterialPageRoute(builder: (ctx) => builder(ctx, settings.arguments));
+    return MaterialPageRoute(
+      builder: (ctx) => builder(ctx, settings.arguments)
+    );
   }
 }

@@ -22,3 +22,7 @@ Based on the `feature first` directory structure proposed by the article at [cod
     - `services`; application wide services, for persistent storage, API calls or other
 - `test`; contains tests for application code
 - `assets`; all non-code assets, images, fonts etc
+
+## Roadmap
+
+Next up, the game balance should stop the balance from going under zero. As I try to flip when balance is zero, I should handle that by showing a modal.

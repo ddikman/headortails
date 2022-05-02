@@ -1,18 +1,18 @@
 import 'dart:math';
 
-import 'package:headortails/features/game/state/did_win_state.dart';
-import 'package:headortails/features/game/state/last_result_state.dart';
+import 'package:headortails/features/game/state/game_state.dart';
+import 'package:headortails/features/game_balance/state/game_balance_state.dart';
 
 class GameLogic {
   final _random = Random();
 
-  final DidWin didWin;
-  final LastResult lastResult;
+  final GameStateNotifier gameState;
+  final GameBalanceStateNotifier gameBalanceState;
 
   CoinSides? choice;
   CoinSides? result;
 
-  GameLogic({required this.didWin, required this.lastResult});
+  GameLogic({required this.gameState, required this.gameBalanceState});
 
   void betTails() {
     choice = CoinSides.tails;
@@ -24,18 +24,13 @@ class GameLogic {
   }
 
   void _flip() {
-    if (_random.nextBool()) {
-      lastResult.heads();
-      result = CoinSides.heads;
-    } else {
-      lastResult.tails();
-      result = CoinSides.tails;
-    }
-
+    gameBalanceState.reduce();
+    result = _random.nextBool() ? CoinSides.heads : CoinSides.tails;
+    final resultString = result == CoinSides.heads ? 'HEADS' : 'TAILS';
     if (result == choice) {
-      didWin.won();
+      gameState.won(resultString);
     } else {
-      didWin.lost();
+      gameState.lost(resultString);
     }
   }
 }

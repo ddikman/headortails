@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:headortails/features/game/services/game_logic.dart';
-import 'package:headortails/features/game/state/did_win_state.dart';
-import 'package:headortails/features/game/state/last_result_state.dart';
+import 'package:headortails/features/game/state/game_state.dart';
+import 'package:headortails/features/game_balance/state/game_balance_state.dart';
 
 class GameButtonsView extends ConsumerWidget {
 
@@ -11,8 +11,8 @@ class GameButtonsView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final gameLogic = GameLogic(
-      didWin: ref.read(didWinProvider.notifier),
-      lastResult: ref.read(lastResultProvider.notifier)
+      gameState: ref.read(gameStateProvider.notifier),
+      gameBalanceState: ref.read(gameBalanceStateProvider.notifier)
     );
 
     return Row(

@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:headortails/design_system/constants/theme_margins.dart';
+import 'package:headortails/design_system/constants/theme_typography.dart';
 
 class StatisticsCard extends StatelessWidget {
   final String title;
@@ -16,7 +16,7 @@ class StatisticsCard extends StatelessWidget {
         children: [
           Text(title),
           const SizedBox(height: ThemeMargins.pageItemPadding),
-          Text(value, style: const TextStyle(fontSize: 20.0))
+          Text(value, style: ThemeTypography.largeText)
         ],
       ),
     );

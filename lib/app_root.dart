@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:headortails/features/game/game_feature.dart';
 
 import 'package:headortails/routing/app_router.dart';
 import 'package:headortails/routing/app_routes.dart';
@@ -20,8 +21,13 @@ class _AppRootState extends State<AppRoot> {
 
   @override
   void initState() {
+    initialiseFeatures();
     initialiseRoutes();
     super.initState();
+  }
+
+  void initialiseFeatures() {
+    GameFeature().register();
   }
 
   void initialiseRoutes() {

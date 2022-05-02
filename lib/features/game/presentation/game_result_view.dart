@@ -3,16 +3,20 @@ import 'package:headortails/design_system/constants/theme_colors.dart';
 import 'package:headortails/design_system/constants/theme_typography.dart';
 
 class GameResultView extends StatelessWidget {
-  const GameResultView({Key? key}) : super(key: key);
+  final String result;
+  final bool didWin;
+
+  const GameResultView({Key? key, required this.result, required this.didWin}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final text = didWin ? 'Yeah, you got it right!' : 'Shame, you lost!';
     return Column(
-      children: const [
-        _CoinGraphic(text: 'TAILS'),
+      children: [
+        _CoinGraphic(text: result),
         Padding(
-          padding: EdgeInsets.only(top: 32.0),
-          child: Text('Alas, you lost!'),
+          padding: const EdgeInsets.only(top: 32.0),
+          child: Text(text),
         )
       ],
     );

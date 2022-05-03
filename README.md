@@ -10,6 +10,25 @@ Then on the [flutter state management with riverpod](https://codewithandrea.com/
 
 As an alternative to this repository, I recommend taking a look at the [starter_architecture_flutter_firebase](https://github.com/bizz84/starter_architecture_flutter_firebase) repository. It illustrates the use of Riverpod but, the overall architecture isn't as easy to read.
 
+Other [good practices](https://medium.com/flutter-community/flutter-best-practices-and-tips-7c2782c9ebb5) and the [official flutter style guide](https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo).
+
+Having a code guideline is a good start but a clear, readable architecture also depends on consistent naming. This have to be opinionated and there is no one right way. This repository shows one such naming convention:
+- `presentation` layer
+    - `_view`; for widgets that do not match a specific type of UI controller (such as `_button`)
+    - `screens`; suffix with `_screen`
+- `services` layer
+    - use no prefix or suffix
+        - the name should explain it's purpose, ex: `Authentication`
+        - for implementations, prefix with the implementation type, ex: `FirebaseAuthentication`
+- `app` layer
+    - `app_`; prefix for classes that will occur only once
+- `models` layer
+    - `_state`; for objects that describe state
+- `state` layer
+    - `_provider`; for riverpod providers
+        - `_notifier`; for riverpod notifiers, should be stored in provider file
+
+
 ## Structure
 
 - `lib`; contains all the application code

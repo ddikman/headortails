@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:headortails/features/game/presentation/game_result_view.dart';
-import 'package:headortails/features/game/state/game_state.dart';
+import 'package:headortails/features/game/state/game_state_provider.dart';
 
 class GameStateView extends ConsumerWidget {
   const GameStateView({Key? key}) : super(key: key);

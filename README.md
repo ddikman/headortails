@@ -18,8 +18,8 @@ Then on the [flutter state management with riverpod](https://codewithandrea.com/
         - `xxx`; feature name
             - `presentation`; visual classes, mostly subclassing *Widget
             - `services`; calling persistent storage, APIs or provides some non-UI service
-            - `models`; coded objects to describe data or state
-            - `state`; holds state through the lifecycle of the app
+            - `models`; data objects to transfer or describe data
+            - `state`; holds state through the lifecycle of the app or a view, such as view models
     - `routing`; the app routing code
     - `services`; application wide services, for persistent storage, API calls or other
 - `test`; contains tests for application code

@@ -1,13 +1,11 @@
-class LocalStorage {
-  Future<String> get(String key) {
-    return Future.value(key);
-  }
+abstract class LocalStorage {
+  int? getInt(String key);
+  double? getDouble(String key);
+  bool? getBool(String key);
+  String? getString(String key);
 
-  Future<int?> getInt(String key) {
-    return Future.value(1);
-  }
-
-  Future<void> save(String key, dynamic value) {
-    return Future.value();
-  }
+  Future<void> setInt(String key, int value);
+  Future<void> setDouble(String key, double value);
+  Future<void> setBool(String key, bool value);
+  Future<void> setString(String key, String value);
 }

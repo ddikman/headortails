@@ -6,6 +6,8 @@ An example application using Riverpod
 
 Based on the `feature first` directory structure proposed by the article at [codewithandrea](https://codewithandrea.com/articles/flutter-project-structure).
 
+Then on the [flutter state management with riverpod](https://codewithandrea.com/articles/flutter-state-management-riverpod/).
+
 ## Structure
 
 - `lib`; contains all the application code

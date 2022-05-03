@@ -8,7 +8,7 @@ Based on the `feature first` directory structure proposed by the article at [cod
 
 Then on the [flutter state management with riverpod](https://codewithandrea.com/articles/flutter-state-management-riverpod/).
 
-As an alternative to this repository, I recommend taking a look at the [starter_architecture_flutter_firebase](https://github.com/bizz84/starter_architecture_flutter_firebase) repository.
+As an alternative to this repository, I recommend taking a look at the [starter_architecture_flutter_firebase](https://github.com/bizz84/starter_architecture_flutter_firebase) repository. It illustrates the use of Riverpod but, the overall architecture isn't as easy to read.
 
 ## Structure
 

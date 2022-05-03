@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:headortails/design_system/constants/theme_margins.dart';
+
+import '../constants/theme_margins.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget child;

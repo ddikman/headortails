@@ -1,4 +1,4 @@
-import 'package:headortails/services/feature_registration.dart';
+import 'package:headortails/app/services/feature_registration.dart';
 
 class GameFeature extends FeatureRegistration {
   @override

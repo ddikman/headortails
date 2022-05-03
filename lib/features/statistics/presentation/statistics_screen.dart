@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:headortails/design_system/constants/theme_margins.dart';
-import 'package:headortails/design_system/widgets/app_scaffold.dart';
+import 'package:headortails/app/presentation/constants/theme_margins.dart';
+import 'package:headortails/app/presentation/widgets/app_scaffold.dart';
+import 'package:headortails/app/routing/app_routes.dart';
 import 'package:headortails/features/statistics/presentation/statistics_card.dart';
-import 'package:headortails/routing/app_routes.dart';
 
 class StatisticsScreen extends StatelessWidget {
   const StatisticsScreen({Key? key}) : super(key: key);

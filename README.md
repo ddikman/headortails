@@ -13,20 +13,26 @@ As an alternative to this repository, I recommend taking a look at the [starter_
 ## Structure
 
 - `lib`; contains all the application code
-    - `design_system`; contains reusable components
-        - `constants`; global things that are supposed to be written once but change very infrequently
-        - `widgets`; reusable UI components
     - `features`; contains all the different use-cases, some visual some pure functional
         - `xxx`; feature name
             - `presentation`; visual classes, mostly subclassing *Widget
             - `services`; calling persistent storage, APIs or provides some non-UI service
             - `models`; data objects to transfer or describe data
             - `state`; holds state through the lifecycle of the app or a view, such as view models
-    - `routing`; the app routing code
-    - `services`; application wide services, for persistent storage, API calls or other
+    - `app`; contains services, models, state etc that is shared throughout the app, other features will depend on this
+        - `presentation`; this is effectively the app design system
+            - `constants`; global things that are supposed to be written once but change very infrequently
+            - `widgets`; reusable UI components
+        - `routing`; the app routing code        
+        - `services`; application wide services, for persistent storage, API calls or other
+        - `state`; app wide state
+        - `utilities`; quick hand helpers and wrappers to hide framework code
+          
 - `test`; contains tests for application code
 - `assets`; all non-code assets, images, fonts etc
 
 ## Roadmap
 
-Next up, the game balance should stop the balance from going under zero. As I try to flip when balance is zero, I should handle that by showing a modal.
+- Handle when balance reaches zero
+- Add linting rules for import paths
+- Add naming rules/guidelines

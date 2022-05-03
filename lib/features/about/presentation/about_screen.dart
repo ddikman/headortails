@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:headortails/design_system/widgets/app_scaffold.dart';
+import 'package:headortails/app/presentation/widgets/app_scaffold.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:headortails/design_system/constants/theme_margins.dart';
-import 'package:headortails/design_system/constants/theme_typography.dart';
+import 'package:headortails/app/presentation/constants/theme_margins.dart';
+import 'package:headortails/app/presentation/constants/theme_typography.dart';
 
 class StatisticsCard extends StatelessWidget {
   final String title;

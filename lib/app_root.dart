@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:headortails/app/routing/app_router.dart';
+import 'package:headortails/app/routing/app_routes.dart';
 import 'package:headortails/features/game/game_feature.dart';
-
-import 'package:headortails/routing/app_router.dart';
-import 'package:headortails/routing/app_routes.dart';
 
 import 'features/about/presentation/about_screen.dart';
 import 'features/game/presentation/game_screen.dart';

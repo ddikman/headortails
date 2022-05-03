@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:headortails/design_system/constants/theme_colors.dart';
-import 'package:headortails/design_system/constants/theme_typography.dart';
+import 'package:headortails/app/presentation/constants/theme_colors.dart';
+import 'package:headortails/app/presentation/constants/theme_typography.dart';
 
 class GameResultView extends StatelessWidget {
   final String result;

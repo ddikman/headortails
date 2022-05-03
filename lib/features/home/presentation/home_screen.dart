@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:headortails/app/routing/app_routes.dart';
 import 'package:headortails/features/home/presentation/home_screen_button.dart';
-import 'package:headortails/routing/app_routes.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

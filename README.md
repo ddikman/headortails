@@ -2,11 +2,13 @@
 
 An example application using Riverpod
 
-## Background
+## Resources
 
 Based on the `feature first` directory structure proposed by the article at [codewithandrea](https://codewithandrea.com/articles/flutter-project-structure).
 
 Then on the [flutter state management with riverpod](https://codewithandrea.com/articles/flutter-state-management-riverpod/).
+
+As an alternative to this repository, I recommend taking a look at the [starter_architecture_flutter_firebase](https://github.com/bizz84/starter_architecture_flutter_firebase) repository.
 
 ## Structure
 

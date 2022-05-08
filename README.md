@@ -2,6 +2,8 @@
 
 An example application using Riverpod
 
+![Example](app_example.gif)
+
 ## Coding
 
 Since I'm using [freezed](https://pub.dev/packages/freezed) in this project, you need to be running it in the background:

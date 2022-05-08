@@ -53,7 +53,7 @@ class _PurchaseDialogueState extends State<PurchaseDialogue> {
     Navigator.of(context).pop();
   }
 
-  _purchase(BuildContext context, GameBalanceState read) async {
+  _purchase(BuildContext context, GameBalanceController read) async {
     if (loading) return;
     setState(() {
       loading = true;

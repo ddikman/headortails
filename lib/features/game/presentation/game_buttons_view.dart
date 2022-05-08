@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:headortails/features/game/services/game_logic.dart';
-import 'package:headortails/features/game/state/game_state_provider.dart';
+import 'package:headortails/features/game/state/game_state_controller.dart';
 import 'package:headortails/features/game_balance/presentation/purchase_dialogue.dart';
 import 'package:headortails/features/game_balance/state/game_balance_controller.dart';
 
@@ -26,7 +26,7 @@ class GameButtonsView extends ConsumerWidget {
     );
   }
 
-  void tryBet(BuildContext context, GameBalanceState gameBalance, Function betFunction) {
+  void tryBet(BuildContext context, GameBalanceController gameBalance, Function betFunction) {
     if (gameBalance.hasBalance) {
       betFunction();
     } else {

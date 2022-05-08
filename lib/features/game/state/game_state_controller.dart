@@ -2,10 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/game_state.dart';
 
-final gameStateProvider = StateNotifierProvider<GameStateNotifier, GameState?>((ref) => GameStateNotifier());
+final gameStateProvider = StateNotifierProvider<GameStateController, GameState?>((ref) => GameStateController());
 
-class GameStateNotifier extends StateNotifier<GameState?> {
-  GameStateNotifier() : super(null);
+class GameStateController extends StateNotifier<GameState?> {
+  GameStateController() : super(null);
 
   void won(String side) {
     state = GameState(won: true, lastFlip: side);

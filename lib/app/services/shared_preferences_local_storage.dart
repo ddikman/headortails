@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:headortails/app/services/local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,6 +21,12 @@ class SharedPreferencesLocalStorage extends LocalStorage {
   @override
   int? getInt(String key) {
     return sharedPreferences.getInt(key);
+  }
+
+  @override
+  Map<String, dynamic>? getJson(String key) {
+    final str = getString(key);
+    return str != null ? jsonDecode(str) : null;
   }
 
   @override
@@ -44,6 +52,11 @@ class SharedPreferencesLocalStorage extends LocalStorage {
   @override
   Future<void> setString(String key, String value) {
     return sharedPreferences.setString(key, value);
+  }
+
+  @override
+  Future<void> setJson(String key, Map<String, dynamic> value) {
+    return setString(key, jsonEncode(value));
   }
 
 }

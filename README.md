@@ -2,6 +2,14 @@
 
 An example application using Riverpod
 
+## Coding
+
+Since I'm using [freezed](https://pub.dev/packages/freezed) in this project, you need to be running it in the background:
+
+```shell
+flutter pub run build_runner watch --delete-conflicting-updates
+```
+
 ## Resources
 
 Based on the `feature first` directory structure proposed by the article at [codewithandrea](https://codewithandrea.com/articles/flutter-project-structure).
@@ -11,6 +19,8 @@ Then on the [flutter state management with riverpod](https://codewithandrea.com/
 As an alternative to this repository, I recommend taking a look at the [starter_architecture_flutter_firebase](https://github.com/bizz84/starter_architecture_flutter_firebase) repository. It illustrates the use of Riverpod but, the overall architecture isn't as easy to read.
 
 Other [good practices](https://medium.com/flutter-community/flutter-best-practices-and-tips-7c2782c9ebb5) and the [official flutter style guide](https://github.com/flutter/flutter/wiki/Style-guide-for-Flutter-repo).
+
+As per [this excellent video](https://www.youtube.com/watch?v=vrPk6LB9bjo) I am also using freezed and json_serializable. It is a bit more setup but it saves a lot of boilerplate as soon as you start serializing models.
 
 Having a code guideline is a good start but a clear, readable architecture also depends on consistent naming. This have to be opinionated and there is no one right way. This repository shows one such naming convention:
 - `presentation` layer
@@ -53,6 +63,6 @@ Having a code guideline is a good start but a clear, readable architecture also 
 
 ## Roadmap
 
-- Handle when balance reaches zero
+- Store the number of games played and balance bought
 - Add linting rules for import paths
 - Add naming rules/guidelines

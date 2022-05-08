@@ -4,6 +4,7 @@ import 'package:headortails/features/game/services/game_logic.dart';
 import 'package:headortails/features/game/state/game_state_controller.dart';
 import 'package:headortails/features/game_balance/presentation/purchase_dialogue.dart';
 import 'package:headortails/features/game_balance/state/game_balance_controller.dart';
+import 'package:headortails/features/game_history/state/game_history_controller.dart';
 
 class GameButtonsView extends ConsumerWidget {
 
@@ -14,6 +15,7 @@ class GameButtonsView extends ConsumerWidget {
     final gameBalance = ref.read(gameBalanceStateProvider.notifier);
     final gameLogic = GameLogic(
       gameState: ref.read(gameStateProvider.notifier),
+      gameHistory: ref.read(gameHistoryProvider.notifier),
       gameBalanceState: gameBalance
     );
 

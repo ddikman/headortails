@@ -23,8 +23,7 @@ class GameBalanceController extends StateNotifier<int> {
     localStorage.setInt(_stateStorageKey, state);
   }
 
-  Future<void> increase(int games) async {
-    await Future.delayed(const Duration(seconds: 2));
+  Future<void> addGames(int games) async {
     state += games;
     localStorage.setInt(_stateStorageKey, state);
   }

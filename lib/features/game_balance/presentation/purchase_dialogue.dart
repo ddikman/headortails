@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:headortails/features/game_balance/state/game_balance_controller.dart';
+import 'package:headortails/features/game_balance/state/game_balance_purchases_controller.dart';
 
 class PurchaseDialogue extends StatefulWidget {
   const PurchaseDialogue({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _PurchaseDialogueState extends State<PurchaseDialogue> {
               ),
               const Text("Please note that this is just an example modal, it won't charge you or anything."),
               const SizedBox(height: 32.0),
-              loading ? const CircularProgressIndicator() : OutlinedButton(onPressed: () => _purchase(context, ref.read(gameBalanceStateProvider.notifier)), child: const Text('Purchase')),
+              loading ? const CircularProgressIndicator() : ElevatedButton(onPressed: () => _purchase(context, ref.read(gameBalancePurchaseProvider.notifier)), child: const Text('Purchase')),
               const SizedBox(height: 16.0)
             ],
           ),
@@ -53,12 +53,12 @@ class _PurchaseDialogueState extends State<PurchaseDialogue> {
     Navigator.of(context).pop();
   }
 
-  _purchase(BuildContext context, GameBalanceController read) async {
+  _purchase(BuildContext context, GameBalancePurchasesController gameBalancePurchases) async {
     if (loading) return;
     setState(() {
       loading = true;
     });
-    await read.increase(10);
+    await gameBalancePurchases.purchaseGames(10);
     if (!mounted) return;
     setState(() {
       loading = false;

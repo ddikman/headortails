@@ -65,6 +65,8 @@ Having a code guideline is a good start but a clear, readable architecture also 
 
 ## Roadmap
 
-- Store the number of games played and balance bought
-- Add linting rules for import paths
-- Add naming rules/guidelines
+- Change the purchase state to an async provider to better link up UI
+- Make purchase button a disabled circular indicator to look nice
+- Animate coin flip
+- Add linting rules for import paths & CI/CD
+- Add test examples

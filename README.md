@@ -15,7 +15,8 @@ Other [good practices](https://medium.com/flutter-community/flutter-best-practic
 Having a code guideline is a good start but a clear, readable architecture also depends on consistent naming. This have to be opinionated and there is no one right way. This repository shows one such naming convention:
 - `presentation` layer
     - `_view`; for widgets that do not match a specific type of UI controller (such as `_button`)
-    - `screens`; suffix with `_screen`
+    - `_screens`; for screens, the top page that can be pushed or popped
+    - `_dialogue`; for alerts/dialogues 
 - `services` layer
     - use no prefix or suffix
         - the name should explain it's purpose, ex: `Authentication`

@@ -7,7 +7,7 @@ class GameLogic {
   final _random = Random();
 
   final GameStateNotifier gameState;
-  final GameBalanceStateNotifier gameBalanceState;
+  final GameBalanceState gameBalanceState;
 
   CoinSides? choice;
   CoinSides? result;

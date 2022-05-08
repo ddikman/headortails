@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:headortails/features/game_balance/state/game_balance_state.dart';
+import 'package:headortails/features/game_balance/state/game_balance_controller.dart';
 
 class GamesLeftView extends ConsumerWidget {
   const GamesLeftView({Key? key}) : super(key: key);

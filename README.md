@@ -14,7 +14,7 @@ Other [good practices](https://medium.com/flutter-community/flutter-best-practic
 
 Having a code guideline is a good start but a clear, readable architecture also depends on consistent naming. This have to be opinionated and there is no one right way. This repository shows one such naming convention:
 - `presentation` layer
-    - `_view`; for widgets that do not match a specific type of UI controller (such as `_button`)
+    - `_view`; for widgets that do not match a specific type of UI control (such as `_button`)
     - `_screens`; for screens, the top page that can be pushed or popped
     - `_dialogue`; for alerts/dialogues 
 - `services` layer
@@ -27,7 +27,7 @@ Having a code guideline is a good start but a clear, readable architecture also 
     - `_state`; for objects that describe state
 - `state` layer
     - `_provider`; for riverpod providers
-        - `_notifier`; for riverpod notifiers, should be stored in provider file
+        - `_controller`; for riverpod notifiers, the reason is they "control" the state or value they notify
 
 
 ## Structure

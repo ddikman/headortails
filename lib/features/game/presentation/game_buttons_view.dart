@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:headortails/features/game/services/game_logic.dart';
 import 'package:headortails/features/game/state/game_state_provider.dart';
 import 'package:headortails/features/game_balance/presentation/purchase_dialogue.dart';
-import 'package:headortails/features/game_balance/state/game_balance_state.dart';
+import 'package:headortails/features/game_balance/state/game_balance_controller.dart';
 
 class GameButtonsView extends ConsumerWidget {
 

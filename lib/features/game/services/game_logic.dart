@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:headortails/features/game/state/game_state_provider.dart';
-import 'package:headortails/features/game_balance/state/game_balance_state.dart';
+import 'package:headortails/features/game_balance/state/game_balance_controller.dart';
 
 class GameLogic {
   final _random = Random();

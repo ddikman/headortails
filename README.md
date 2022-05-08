@@ -65,7 +65,6 @@ Having a code guideline is a good start but a clear, readable architecture also 
 
 ## Roadmap
 
-- Change the purchase state to an async provider to better link up UI
 - Make purchase button a disabled circular indicator to look nice
 - Animate coin flip
 - Add linting rules for import paths & CI/CD

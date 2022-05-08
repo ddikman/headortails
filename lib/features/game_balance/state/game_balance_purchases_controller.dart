@@ -3,23 +3,25 @@ import 'package:headortails/app/services/local_storage.dart';
 import 'package:headortails/app/state/local_storage_provider.dart';
 import 'package:headortails/features/game_balance/state/game_balance_controller.dart';
 
-final gameBalancePurchaseProvider = StateNotifierProvider<GameBalancePurchasesController, int>((ref) {
+final gameBalancePurchaseProvider = StateNotifierProvider<GameBalancePurchasesController, AsyncValue<int>>((ref) {
   final localStorage = ref.read(localStorageProvider);
   return GameBalancePurchasesController(localStorage: localStorage, ref: ref);
 });
 
-class GameBalancePurchasesController extends StateNotifier<int> {
+class GameBalancePurchasesController extends StateNotifier<AsyncValue<int>> {
   static const _storageKey = "game_balance_purchases";
   final LocalStorage localStorage;
   final Ref ref;
 
-  GameBalancePurchasesController({required this.localStorage, required this.ref}) : super(_readPurchases(localStorage));
+  GameBalancePurchasesController({required this.localStorage, required this.ref}) : super(AsyncValue.data(_readPurchases(localStorage)));
 
   Future<void> purchaseGames(int games) async {
+    state = const AsyncValue.loading();
     await Future.delayed(const Duration(seconds: 2));
-    state = state + games;
+    final purchases = (state.value ?? 0) + games;
+    state = AsyncValue.data(purchases);
     ref.read(gameBalanceStateProvider.notifier).addGames(games);
-    _savePurchases(state);
+    _savePurchases(purchases);
   }
 
   void _savePurchases(int purchases) {

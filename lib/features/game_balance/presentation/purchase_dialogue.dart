@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:headortails/features/game_balance/state/game_balance_purchases_controller.dart';
 
-class PurchaseDialogue extends StatefulWidget {
+class PurchaseDialogue extends StatelessWidget {
   const PurchaseDialogue({Key? key}) : super(key: key);
-
-  @override
-  State<PurchaseDialogue> createState() => _PurchaseDialogueState();
 
   static void show(BuildContext context) {
     showModalBottomSheet(
@@ -15,37 +12,37 @@ class PurchaseDialogue extends StatefulWidget {
       builder: (context) => const PurchaseDialogue(),
     );
   }
-}
-
-class _PurchaseDialogueState extends State<PurchaseDialogue> {
-  // This feels off, like it should be a state or provider of its own
-  // like a gameBalancePurchaseController, that way controlling the button would be easy
-  // and I can avoid using setState
-  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
     return Consumer(
-      builder: (ctx, ref, _) => Wrap(
-        children: [Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            children: [
-              Row(
+      builder: (ctx, ref, _) {
+        final gameBalancePurchase = ref.watch(gameBalancePurchaseProvider);
+        return Wrap(
+            children: [Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
                 children: [
-                  const Expanded(child: Text('Buy credits', style: TextStyle(fontSize: 18.0))),
-                  TextButton(onPressed: () => _close(context),
-                  child: const Text('Cancel'))
+                  Row(
+                    children: [
+                      const Expanded(child: Text('Buy credits', style: TextStyle(fontSize: 18.0))),
+                      TextButton(onPressed: () => _close(context),
+                          child: const Text('Cancel'))
+                    ],
+                  ),
+                  const Text("Please note that this is just an example modal, it won't charge you or anything."),
+                  const SizedBox(height: 32.0),
+                  gameBalancePurchase.when(
+                      data: (_) => ElevatedButton(onPressed: () => _purchase(context, ref.read(gameBalancePurchaseProvider.notifier)), child: const Text('Purchase')),
+                      error: (_, __) => const Text('Failed to process purchase..'),
+                      loading: () => const CircularProgressIndicator()
+                  ),
+                  const SizedBox(height: 16.0)
                 ],
               ),
-              const Text("Please note that this is just an example modal, it won't charge you or anything."),
-              const SizedBox(height: 32.0),
-              loading ? const CircularProgressIndicator() : ElevatedButton(onPressed: () => _purchase(context, ref.read(gameBalancePurchaseProvider.notifier)), child: const Text('Purchase')),
-              const SizedBox(height: 16.0)
-            ],
-          ),
-        )]
-      ),
+            )]
+        );
+      }
     );
   }
 
@@ -54,15 +51,7 @@ class _PurchaseDialogueState extends State<PurchaseDialogue> {
   }
 
   _purchase(BuildContext context, GameBalancePurchasesController gameBalancePurchases) async {
-    if (loading) return;
-    setState(() {
-      loading = true;
-    });
     await gameBalancePurchases.purchaseGames(10);
-    if (!mounted) return;
-    setState(() {
-      loading = false;
-    });
     _close(context);
   }
 }

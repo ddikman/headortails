@@ -1,48 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:headortails/app/presentation/alerts/show_snackbar.dart';
 import 'package:headortails/features/game_balance/state/game_balance_purchases_controller.dart';
 
-class PurchaseDialogue extends StatelessWidget {
-  const PurchaseDialogue({Key? key}) : super(key: key);
+class PurchaseDialogue extends StatefulWidget {
+  final GameBalancePurchasesController purchasesController;
+
+  const PurchaseDialogue._({Key? key, required this.purchasesController}) : super(key: key);
 
   static void show(BuildContext context) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
-      builder: (context) => const PurchaseDialogue(),
+      builder: (context) => Consumer(builder: (ctx, ref, _) {
+        final purchasesController = ref.read(gameBalancePurchaseProvider.notifier);
+        return PurchaseDialogue._(purchasesController: purchasesController);
+      }),
     );
   }
 
   @override
+  State<PurchaseDialogue> createState() => _PurchaseDialogueState();
+}
+
+class _PurchaseDialogueState extends State<PurchaseDialogue> {
+  bool isProcessing = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (ctx, ref, _) {
-        final gameBalancePurchase = ref.watch(gameBalancePurchaseProvider);
-        return Wrap(
-            children: [Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Column(
+    return Wrap(
+        children: [Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      const Expanded(child: Text('Buy credits', style: TextStyle(fontSize: 18.0))),
-                      TextButton(onPressed: () => _close(context),
-                          child: const Text('Cancel'))
-                    ],
-                  ),
-                  const Text("Please note that this is just an example modal, it won't charge you or anything."),
-                  const SizedBox(height: 32.0),
-                  gameBalancePurchase.when(
-                      data: (_) => ElevatedButton(onPressed: () => _purchase(context, ref.read(gameBalancePurchaseProvider.notifier)), child: const Text('Purchase')),
-                      error: (_, __) => const Text('Failed to process purchase..'),
-                      loading: () => const CircularProgressIndicator()
-                  ),
-                  const SizedBox(height: 16.0)
+                  const Expanded(child: Text('Buy credits', style: TextStyle(fontSize: 18.0))),
+                  TextButton(onPressed: () => _close(context),
+                      child: const Text('Cancel'))
                 ],
               ),
-            )]
-        );
-      }
+              const Text("Please note that this is just an example modal, it won't charge you or anything."),
+              const SizedBox(height: 32.0),
+              isProcessing ? const _ProcessingButton() : ElevatedButton(onPressed: () => _purchase(context, widget.purchasesController), child: const Text('Purchase')),
+              const SizedBox(height: 16.0)
+            ],
+          ),
+        )]
     );
   }
 
@@ -51,7 +55,23 @@ class PurchaseDialogue extends StatelessWidget {
   }
 
   _purchase(BuildContext context, GameBalancePurchasesController gameBalancePurchases) async {
-    await gameBalancePurchases.purchaseGames(10);
+    setState(() => isProcessing = true);
+    try {
+     await gameBalancePurchases.purchaseGames(10);
+    } catch (err) {
+      showSnackBar(context, "Failed to purchase: $err");
+    }
     _close(context);
+  }
+}
+
+class _ProcessingButton extends StatelessWidget {
+  const _ProcessingButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(onPressed: null, child: Row(children: const [Text('Processing'), SizedBox(width: 8.0), SizedBox(height: 12.0, width: 12.0, child: CircularProgressIndicator(color: Colors.grey, strokeWidth: 2))], mainAxisSize: MainAxisSize.min));
   }
 }

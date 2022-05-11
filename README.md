@@ -9,7 +9,7 @@ An example application using Riverpod
 Since I'm using [freezed](https://pub.dev/packages/freezed) in this project, you need to be running it in the background:
 
 ```shell
-flutter pub run build_runner watch --delete-conflicting-updates
+flutter pub run build_runner watch --delete-conflicting-outputs
 ```
 
 ## Resources
